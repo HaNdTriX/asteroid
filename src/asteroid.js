@@ -6,7 +6,13 @@
 
 var DDP = require("ddp.js");
 var Q = require("q");
-var WebSocket = require("faye-websocket");
+var WebSocket;
+try {
+	// If faye-websocket is not available, use ws
+	WebSocket = require("faye-websocket").Client;
+} catch (e) {
+	WebSocket = require("ws");
+}
 
 // @endif
 
@@ -40,7 +46,7 @@ var Asteroid = function (host, ssl, socketInterceptFunction) {
 	// @if ENV=='node'
 	this._ddpOptions = {
 		endpoint: (ssl ? "wss://" : "ws://") + host + "/websocket",
-		SocketConstructor: WebSocket.Client,
+		SocketConstructor: WebSocket,
 		socketInterceptFunction: socketInterceptFunction
 	};
 	// @endif

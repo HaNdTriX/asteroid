@@ -5,15 +5,15 @@ must._toString = function (thing) {
 };
 
 must.beString = function (s) {
-	var type = this._toString(s);
-	if (type !== "String") {
-		throw new Error("Assertion failed: expected String, instead got " + type);
+	if (typeof s !== "string") {
+		var type = this._toString(s);
+		throw new Error("Assertion failed: expected string, instead got " + type);
 	}
 };
 
 must.beArray = function (o) {
-	var type = this._toString(o);
-	if (type !== "Array") {
+	if (!Array.isArray(o)) {
+		var type = this._toString(o);
 		throw new Error("Assertion failed: expected Array, instead got " + type);
 	}
 };
