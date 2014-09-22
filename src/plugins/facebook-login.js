@@ -1,7 +1,5 @@
 (function (root, extend) {
-    if (typeof define === "function" && define.amd) {
-		// XXX figure out how to do it
-    } else if (typeof exports === "object") {
+    if (typeof exports === "object") {
 		extend(require("asteroid"));
     } else {
         extend(root.Asteroid);

@@ -1,11 +1,9 @@
-(function (root, factory) {
-    if (typeof define === "function" && define.amd) {
-        define(factory);
-    } else if (typeof exports === "object") {
-        module.exports = factory();
+(function (root, extend) {
+	if (typeof exports === "object") {
+		extend(require("asteroid"));
     } else {
-        root.Asteroid = factory();
+        extend(root.Asteroid);
     }
-}(this, function () {
+}(this, function (Asteroid) {
 
 "use strict";
